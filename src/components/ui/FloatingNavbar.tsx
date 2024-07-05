@@ -10,15 +10,14 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-
 export const FloatingNav = ({
   navItems,
   className,
 }: {
   navItems: {
     name: string;
-    baseUrl:string;
-    sectionId:string;
+    baseUrl: string;
+    sectionId: string;
     icon?: JSX.Element;
   }[];
   className?: string;
@@ -48,23 +47,16 @@ export const FloatingNav = ({
     }
   });
 
-  // const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
-  //   e.preventDefault();
-  //   const targetElement = document.querySelector(link);
-  //   if (targetElement) {
-  //     const yOffset = -80; // Adjust this value based on your navbar height
-  //     const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  //     window.scrollTo({ top: y, behavior: 'smooth' });
-  //   }
-  // };
-
-
-  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, baseUrl: string, sectionId: string) => {
+  const handleNavItemClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    baseUrl: string,
+    sectionId: string
+  ) => {
     e.preventDefault();
 
-    if (pathname === '/') {
+    if (pathname === "/") {
       // Scroll to the section directly if already on the home page
-      document.querySelector(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector(sectionId)?.scrollIntoView({ behavior: "smooth" });
     } else {
       // Navigate to the home page first, then scroll to the section
       router.push(`${baseUrl}${sectionId}`);
@@ -95,19 +87,21 @@ export const FloatingNav = ({
           border: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
-          {navItems.map((navItem, idx) => (
-        <Link
-          key={`link=${idx}`}
-          href={navItem.baseUrl}
-          onClick={(e) => handleNavItemClick(e, navItem.baseUrl, navItem.sectionId)}
-          className={cn(
-            "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
-          )}
-        >
-          <span className="block sm:hidden">{navItem.icon}</span>
-          <span className="text-sm !cursor-pointer">{navItem.name}</span>
-        </Link>
-      ))}
+        {navItems.map((navItem, idx) => (
+          <Link
+            key={`link=${idx}`}
+            href={navItem.baseUrl}
+            onClick={(e) =>
+              handleNavItemClick(e, navItem.baseUrl, navItem.sectionId)
+            }
+            className={cn(
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+            )}
+          >
+            <span className="block sm:hidden">{navItem.icon}</span>
+            <span className="text-sm !cursor-pointer">{navItem.name}</span>
+          </Link>
+        ))}
       </motion.div>
     </AnimatePresence>
   );

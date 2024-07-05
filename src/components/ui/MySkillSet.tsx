@@ -1,6 +1,4 @@
 "use client";
-import SkillCard from "@/components/ui/SkillCard";
-import Skills from "../../data/data";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Marquee from "react-fast-marquee";
