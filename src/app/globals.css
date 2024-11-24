@@ -169,7 +169,19 @@ skills-card {
   color: #323946;
   letter-spacing: 0.1rem;
   font-weight: 600;
+  transition: all 0.3s ease; /* Adds smooth transition for size change */
 }
+
 .my-btn:hover {
   box-shadow: none;
+}
+
+/* Small devices */
+@media (max-width: 640px) {
+  .my-btn {
+    padding: 0.4rem 1rem; /* Much smaller padding */
+    font-size: 0.75rem; /* Smaller font size */
+    border-radius: 1.5rem; /* Reduced border radius */
+    gap: 5px;
+  }
 }

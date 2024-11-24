@@ -14,8 +14,8 @@ const About = () => {
   return (
     <section id="about">
       <div className="w-full h-full text-white">
-        <div className="py-7 mt-3">
-          <h1 className="text-2xl font-sans font-bold mt-20 lg:mt-10">
+        <div className="pb-5">
+          <h1 className="text-2xl font-sans font-bold mt-0 md:mt-28">
             About Me
           </h1>
         </div>
